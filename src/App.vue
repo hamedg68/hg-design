@@ -40,21 +40,15 @@
 </template>
 
 <script setup lang="ts">
-import { Form } from 'vee-validate';
-import * as Yup from 'yup';
-import TextInput from './components/TextInput.vue';
+import { Form } from "vee-validate";
+import * as Yup from "yup";
+import TextInput from "./components/TextInput.vue";
 
-function onSubmit(values) {
+function onSubmit(values: any) {
   alert(JSON.stringify(values, null, 2));
 }
 
-function onInvalidSubmit() {
-  const submitBtn = document.querySelector('.submit-btn');
-  submitBtn.classList.add('invalid');
-  setTimeout(() => {
-    submitBtn.classList.remove('invalid');
-  }, 1000);
-}
+function onInvalidSubmit() {}
 
 // Using yup to generate a validation schema
 // https://vee-validate.logaretm.com/v4/guide/validation#validation-schemas-with-yup
@@ -64,59 +58,6 @@ const schema = Yup.object().shape({
   password: Yup.string().min(6).required(),
   confirm_password: Yup.string()
     .required()
-    .oneOf([Yup.ref('password')], 'Passwords do not match'),
+    .oneOf([Yup.ref("password")], "Passwords do not match"),
 });
 </script>
-
-<style>
-* {
-  box-sizing: border-box;
-}
-
-:root {
-  --primary-color: #0071fe;
-  --error-color: #f23648;
-  --error-bg-color: #fddfe2;
-  --success-color: #21a67a;
-  --success-bg-color: #e0eee4;
-}
-
-html,
-body {
-  width: 100%;
-  height: 100%;
-}
-
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  margin-top: 60px;
-
-  width: 100%;
-  height: 100%;
-}
-
-form {
-  width: 300px;
-  margin: 0px auto;
-  padding-bottom: 60px;
-}
-
-.submit-btn {
-  background: var(--primary-color);
-  outline: none;
-  border: none;
-  color: #fff;
-  font-size: 18px;
-  padding: 10px 15px;
-  display: block;
-  width: 100%;
-  border-radius: 7px;
-  margin-top: 40px;
-  transition: transform 0.3s ease-in-out;
-  cursor: pointer;
-}
-
-</style>
