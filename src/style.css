@@ -48,14 +48,13 @@ form {
   cursor: pointer;
 }
 
-
-
 /* text Input */
 
-
-.TextInput {
+.form-item {
   position: relative;
   margin-bottom: calc(1em * 1.5);
+}
+.TextInput {
   width: 100%;
 }
 
@@ -88,28 +87,28 @@ input:focus {
   font-size: 14px;
 }
 
-.TextInput.has-error input {
+.form-item.has-error input {
   background-color: var(--error-bg-color);
   color: var(--error-color);
 }
 
-.TextInput.has-error input:focus {
+.form-item.has-error input:focus {
   border-color: var(--error-color);
 }
 
-.TextInput.has-error .help-message {
+.form-item.has-error .help-message {
   color: var(--error-color);
 }
 
-.TextInput.success input {
+.form-item.success input {
   background-color: var(--success-bg-color);
   color: var(--success-color);
 }
 
-.TextInput.success input:focus {
+.form-item.success input:focus {
   border-color: var(--success-color);
 }
 
-.TextInput.success .help-message {
+.form-item.success .help-message {
   color: var(--success-color);
 }

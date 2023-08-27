@@ -1,46 +1,37 @@
 <template>
-  <div
-    class="TextInput"
-    :class="{
-      'has-error': !!errorMessage && meta.validated && meta.touched,
-      success: meta.valid && meta.dirty,
-    }"
+  <FormItem
+    :name="name"
+    :label="label"
+    :error-message="errorMessage || ''"
+    :meta="meta"
   >
-    <label :for="name">{{ label }}</label>
-    <input
-      v-model="inputValue"
-      :name="name"
-      :id="name"
-      :type="type"
-      :placeholder="placeholder"
-    />
-
-    <p
-      class="help-message"
-      v-show="(errorMessage && meta.validated && meta.touched) || (meta.valid && meta.dirty)"
-    >
-      {{ errorMessage || successMessage }}
-    </p>
-  </div>
+    <div class="TextInput">
+      <input
+        v-model="inputValue"
+        :name="name"
+        :id="name"
+        :type="type"
+        :placeholder="placeholder"
+      />
+    </div>
+  </FormItem>
 </template>
 
 <script setup lang="ts">
 import { toRef } from "vue";
 import { useField } from "vee-validate";
-
+import FormItem from "./FormItem.vue";
 const props = withDefaults(
   defineProps<{
     label: string;
     name: string;
     type?: string;
     value?: string;
-    successMessage?: string;
     placeholder?: string;
   }>(),
   {
     type: "text",
     value: undefined,
-    successMessage: "",
     placeholder: "",
   }
 );

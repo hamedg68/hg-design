@@ -10,28 +10,24 @@
         type="text"
         label="Full Name"
         placeholder="Your Name"
-        success-message="Nice to meet you!"
       />
       <TextInput
         name="email"
         type="email"
         label="E-mail"
         placeholder="Your email address"
-        success-message="Got it, we won't spam you!"
       />
       <TextInput
         name="password"
         type="password"
         label="Password"
         placeholder="Your password"
-        success-message="Nice and secure!"
       />
       <TextInput
         name="confirm_password"
         type="password"
         label="Confirm Password"
         placeholder="Type it again"
-        success-message="Glad you remembered it!"
       />
 
       <button class="submit-btn" type="submit">Submit</button>
