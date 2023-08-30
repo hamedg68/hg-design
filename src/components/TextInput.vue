@@ -12,11 +12,7 @@
         :id="name"
         :type="type"
         :placeholder="placeholder"
-        @input="($event)=>{
-          const val = ($event.target as HTMLInputElement).value;
-          inputValue = val
-          emit('update:modelValue', val)
-        }"
+        @input="onInputChange($event)"
       />
     </div>
   </FormItem>
@@ -59,4 +55,10 @@ const {
 const emit = defineEmits<{
   (e: "update:modelValue", event: string): void;
 }>();
+
+function onInputChange(event: Event) {
+  const val = (event.target as HTMLInputElement).value;
+  inputValue.value = val;
+  emit("update:modelValue", val);
+}
 </script>
