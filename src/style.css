@@ -64,7 +64,8 @@ label {
   width: 100%;
 }
 
-input {
+input,
+select {
   border-radius: 5px;
   border: 2px solid transparent;
   padding: 15px 10px;
@@ -75,7 +76,8 @@ input {
     background-color 0.3s ease-in-out;
 }
 
-input:focus {
+input:focus,
+select:focus {
   border-color: var(--primary-color);
 }
 
@@ -87,12 +89,14 @@ input:focus {
   font-size: 14px;
 }
 
-.form-item.has-error input {
+.form-item.has-error input,
+.form-item.has-error select {
   background-color: var(--error-bg-color);
   color: var(--error-color);
 }
 
-.form-item.has-error input:focus {
+.form-item.has-error input:focus,
+.form-item.has-error select:focus {
   border-color: var(--error-color);
 }
 
@@ -100,12 +104,14 @@ input:focus {
   color: var(--error-color);
 }
 
-.form-item.success input {
+.form-item.success input,
+.form-item.success select {
   background-color: var(--success-bg-color);
   color: var(--success-color);
 }
 
-.form-item.success input:focus {
+.form-item.success input:focus,
+.form-item.success select:focus {
   border-color: var(--success-color);
 }
 

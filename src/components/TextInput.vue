@@ -7,11 +7,16 @@
   >
     <div class="TextInput">
       <input
-        v-model="inputValue"
+        :model-value="inputValue"
         :name="name"
         :id="name"
         :type="type"
         :placeholder="placeholder"
+        @input="($event)=>{
+          const val = ($event.target as HTMLInputElement).value;
+          inputValue = val
+          emit('update:modelValue', val)
+        }"
       />
     </div>
   </FormItem>
@@ -26,12 +31,12 @@ const props = withDefaults(
     label: string;
     name: string;
     type?: string;
-    value?: string;
+    modelValue?: string;
     placeholder?: string;
   }>(),
   {
     type: "text",
-    value: undefined,
+    modelValue: undefined,
     placeholder: "",
   }
 );
@@ -48,6 +53,10 @@ const {
   errorMessage,
   meta,
 } = useField(name, undefined, {
-  initialValue: props.value,
+  initialValue: props.modelValue,
 });
+
+const emit = defineEmits<{
+  (e: "update:modelValue", event: string): void;
+}>();
 </script>
