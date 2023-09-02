@@ -7,7 +7,7 @@
   >
     <div class="TextInput">
       <input
-        :model-value="inputValue"
+        :value="inputValue"
         :name="name"
         :id="name"
         :type="type"
