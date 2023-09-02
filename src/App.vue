@@ -56,12 +56,28 @@ function onInvalidSubmit() {}
 
 const listRegions = [
   {
-    value: 1,
-    text: "Metropolitana",
+    id: 1,
+    title: "italy",
   },
   {
-    value: 2,
-    text: "Ecuador",
+    id: 2,
+    title: "Ecuador",
+  },
+  {
+    id: 3,
+    title: "brazil",
+  },
+  {
+    id: 4,
+    title: "iran",
+  },
+  {
+    id: 5,
+    title: "USA",
+  },
+  {
+    id: 6,
+    title: "canada",
   },
 ];
 

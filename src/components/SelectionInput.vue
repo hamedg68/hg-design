@@ -5,13 +5,15 @@
     :error-message="errorMessage || ''"
     :meta="meta"
   >
-    <div class="TextInput">
-      <select v-model="inputValue" :name="name" @change="onChange">
-        <!-- <option value="" disabled selected>{{ placeholder }}</option> -->
-        <option v-for="(item, index) in items" :key="index" :value="item.value">
-          {{ item.text }}
-        </option>
-      </select>
+    <div>
+      <v-select
+        class="v-select"
+        v-model="inputValue"
+        :options="items"
+        :label="props.selectionLabel"
+        :reduce="(val : Record<string, any>) => val[props.selectionValue]"
+        @update:model-value="onChange"
+      ></v-select>
     </div>
   </FormItem>
 </template>
@@ -20,6 +22,7 @@
 import { toRef } from "vue";
 import { useField } from "vee-validate";
 import FormItem from "./FormItem.vue";
+import "vue-select/dist/vue-select.css";
 const props = withDefaults(
   defineProps<{
     label: string;
@@ -28,11 +31,15 @@ const props = withDefaults(
     modelValue?: string;
     placeholder?: string;
     items: Array<Record<string, any>>;
+    selectionLabel?: string;
+    selectionValue?: string;
   }>(),
   {
     type: "text",
     modelValue: undefined,
     placeholder: "",
+    selectionLabel: "title",
+    selectionValue: "id",
   }
 );
 
@@ -48,14 +55,15 @@ const {
   errorMessage,
   meta,
 } = useField(name, undefined, {
-  initialValue: props.modelValue,
+  initialValue: props.items.find(
+    (item) => item[props.selectionValue] == props.modelValue
+  )?.[props.selectionLabel],
 });
 
-const onChange = (event : Event) => {
-    const value = (event.target as HTMLSelectElement).value;
-    //   handleChange(value);
-    emit("update:modelValue", value);
-  
+const onChange = (value: string) => {
+  // const value = (event.target as HTMLSelectElement).value;
+  //   handleChange(value);
+  emit("update:modelValue", value);
 };
 
 const emit = defineEmits<{
