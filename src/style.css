@@ -8,6 +8,9 @@
   --error-bg-color: #fddfe2;
   --success-color: #21a67a;
   --success-bg-color: #e0eee4;
+  --large-height: 44px;
+  --middle-height: 38px;
+  --small-height: 32px;
 }
 
 html,
@@ -20,17 +23,11 @@ body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  margin-top: 60px;
-
-  width: 100%;
-  height: 100%;
 }
 
 form {
   width: 300px;
   margin: 0px auto;
-  padding-bottom: 60px;
 }
 
 .submit-btn {
@@ -54,9 +51,6 @@ form {
   position: relative;
   margin-bottom: calc(1em * 1.5);
 }
-.TextInput {
-  width: 100%;
-}
 
 label {
   display: block;
@@ -64,34 +58,55 @@ label {
   width: 100%;
 }
 
-input,
-select {
+.input {
+  height: var(--large-height);
+}
+input {
   border-radius: 5px;
   border: 2px solid transparent;
-  padding: 0 10px;
-  height: 50px;
-  outline: none;
   background-color: #f2f5f7;
+  padding: 0 10px;
+  height: 100%;
+  outline: none;
   width: 100%;
   transition: border-color 0.3s ease-in-out, color 0.3s ease-in-out,
     background-color 0.3s ease-in-out;
 }
+.v-select .vs__search {
+  margin: 0 !important;
+  padding: 0 10px !important;
+  border: none !important;
+}
 
-.v-select .vs__search::placeholder,
-.v-select .vs__dropdown-toggle,
-.v-select .vs__dropdown-menu {
-  border-radius: 5px;
-  border: 2px solid transparent;
+.v-select .vs__actions {
+  padding-top: 0 !important;
+}
+.v-select .vs__selected-options {
+  padding: 0 !important;
+}
+.v-select .vs__dropdown-toggle {
   outline: none;
   padding: 0;
-  background-color: #f2f5f7;
+  height: 100%;
+  border: none !important;
+
   width: 100%;
+}
+.v-select {
+  border: 2px solid transparent;
+  height: var(--large-height);
+  background-color: #f2f5f7;
   transition: border-color 0.3s ease-in-out, color 0.3s ease-in-out,
     background-color 0.3s ease-in-out;
+  border-radius: 5px;
+}
+
+.v-select .vs__dropdown-menu {
+  border: none !important;
 }
 
 input:focus,
-select:focus {
+.v-select-focus {
   border-color: var(--primary-color);
 }
 
@@ -104,12 +119,14 @@ select:focus {
 }
 
 .form-item.has-error input,
+.form-item.has-error .v-select,
 .form-item.has-error select {
   background-color: var(--error-bg-color);
   color: var(--error-color);
 }
 
 .form-item.has-error input:focus,
+.form-item.has-error .v-select-focus ,
 .form-item.has-error select:focus {
   border-color: var(--error-color);
 }
@@ -119,12 +136,14 @@ select:focus {
 }
 
 .form-item.success input,
+.form-item.success .v-select,
 .form-item.success select {
   background-color: var(--success-bg-color);
   color: var(--success-color);
 }
 
 .form-item.success input:focus,
+.form-item.success .v-select-focus,
 .form-item.success select:focus {
   border-color: var(--success-color);
 }
