@@ -39,6 +39,9 @@
 
       <button class="submit-btn" type="submit">Submit</button>
     </Form>
+
+    <date-picker popover auto-submit />
+
   </div>
 </template>
 
