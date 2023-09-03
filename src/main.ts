@@ -8,6 +8,6 @@ const app = createApp(App);
 
 
 app.component('v-select', vSelect)
-app.component('date-picker', Vue3PersianDatetimePicker)
+app.component('persian-date-picker', Vue3PersianDatetimePicker)
 
 app.mount("#app");

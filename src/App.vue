@@ -14,49 +14,57 @@
         placeholder="Your Name"
       />
       <TextInput
-      v-model="state.form.email"
+        v-model="state.form.email"
         name="email"
         type="email"
         label="E-mail"
         placeholder="Your email address"
       />
       <TextInput
-      v-model="state.form.password"
+        v-model="state.form.password"
         name="password"
         type="password"
         label="Password"
         placeholder="Your password"
       />
       <TextInput
-      v-model="state.form.confirm_password"
+        v-model="state.form.confirm_password"
         name="confirm_password"
         type="password"
         label="Confirm Password"
         placeholder="Type it again"
       />
 
-      <SelectionInput v-model="state.form.region" name="region" label="region" :items="listRegions" />
+      <SelectionInput
+        v-model="state.form.region"
+        name="region"
+        label="region"
+        :items="listRegions"
+      />
+
+      <DatePicker
+        v-model="state.form.birthDate"
+        name="birthDate"
+        label="birthDate"
+      ></DatePicker>
 
       <button class="submit-btn" type="submit">Submit</button>
     </Form>
-
-    <date-picker popover auto-submit />
-
   </div>
 </template>
 
 <script setup lang="ts">
+import { reactive } from "vue";
 import { Form } from "vee-validate";
 import * as Yup from "yup";
 import TextInput from "./components/TextInput.vue";
 import SelectionInput from "./components/SelectionInput.vue";
-import { reactive } from "vue";
+import DatePicker from "./components/DatePicker.vue";
 
 function onSubmit(values: any) {
   alert(JSON.stringify(values, null, 2));
 }
 function onInvalidSubmit() {}
-
 const listRegions = [
   {
     id: 1,
@@ -89,12 +97,13 @@ type Form = {
   email: string;
   region: string;
   password: string;
+  birthDate: string;
   confirm_password: string;
 };
 const state = reactive<{
   form: Form;
 }>({
-  form: {} as Form,
+  form: { birthDate: "2023-09-02" } as Form,
 });
 // Using yup to generate a validation schema
 // https://vee-validate.logaretm.com/v4/guide/validation#validation-schemas-with-yup
@@ -102,6 +111,7 @@ const schema = Yup.object().shape({
   name: Yup.string().required(),
   email: Yup.string().email().required(),
   region: Yup.string().required(),
+  birthDate: Yup.string().required(),
   password: Yup.string().min(6).required(),
   confirm_password: Yup.string()
     .required()
