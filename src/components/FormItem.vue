@@ -6,7 +6,7 @@
       success: meta.valid && meta.dirty,
     }"
   >
-    <label :for="name">{{ label }}</label>
+    <label class="label" :for="name">{{ label }}</label>
     <slot></slot>
 
     <div

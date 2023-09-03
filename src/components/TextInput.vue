@@ -5,8 +5,9 @@
     :error-message="errorMessage || ''"
     :meta="meta"
   >
-  <div class="input">
-    <input
+  <div class="textInputContainer">
+    <input  
+      class="input"
       :value="inputValue"
       :name="name"
       :id="name"
