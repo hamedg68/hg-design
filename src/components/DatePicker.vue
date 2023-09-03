@@ -8,6 +8,7 @@
     <div class="textInputContainer">
       <input
         :value="
+          inputValue &&
           new Intl.DateTimeFormat('fa-IR', {
             year: 'numeric',
             month: '2-digit',

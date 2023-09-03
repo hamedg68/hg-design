@@ -103,7 +103,7 @@ type Form = {
 const state = reactive<{
   form: Form;
 }>({
-  form: { birthDate: "2023-09-02" } as Form,
+  form: {} as Form,
 });
 // Using yup to generate a validation schema
 // https://vee-validate.logaretm.com/v4/guide/validation#validation-schemas-with-yup
