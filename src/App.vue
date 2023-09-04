@@ -47,6 +47,7 @@
         name="birthDate"
         label="تاریخ تولد"
         placeholder="تاریخ تولد"
+        disable-incoming-days
       ></DatePicker>
 
       <button class="submit-btn" type="submit">تایید</button>

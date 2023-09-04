@@ -32,6 +32,8 @@
       display-format="jYYYY-jMM-jDD"
       custom-input=".custom-input"
       @update:modelValue="onInputChange($event)"
+      :max="disableIncomingDays ? new Date().toISOString().split('T')[0] : max"
+      :min="disablePassedDays ? new Date().toISOString().split('T')[0] : min"
     />
   </FormItem>
 </template>
@@ -46,6 +48,10 @@ const props = withDefaults(
     name: string;
     modelValue?: string;
     placeholder?: string;
+    max?: string;
+    min?: string;
+    disableIncomingDays?: boolean;
+    disablePassedDays?: boolean;
   }>(),
   {
     modelValue: undefined,
