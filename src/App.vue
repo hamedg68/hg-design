@@ -10,45 +10,46 @@
         v-model="state.form.name"
         name="name"
         type="text"
-        label="Full Name"
-        placeholder="Your Name"
+        label="نام"
+        placeholder="نام شما..."
       />
       <TextInput
         v-model="state.form.email"
         name="email"
         type="email"
-        label="E-mail"
-        placeholder="Your email address"
+        label="ایمیل"
+        placeholder="ایمیل..."
       />
       <TextInput
         v-model="state.form.password"
         name="password"
         type="password"
-        label="Password"
-        placeholder="Your password"
+        label="گذرواژه"
+        placeholder="گذرواژه"
       />
       <TextInput
-        v-model="state.form.confirm_password"
         name="confirm_password"
         type="password"
-        label="Confirm Password"
-        placeholder="Type it again"
+        label="تکرار گذرواژه"
+        placeholder="تکرار گذرواژه"
       />
 
       <SelectionInput
         v-model="state.form.region"
         name="region"
-        label="region"
+        label="شهر"
         :items="listRegions"
+        placeholder="شهر"
       />
 
       <DatePicker
         v-model="state.form.birthDate"
         name="birthDate"
-        label="birthDate"
+        label="تاریخ تولد"
+        placeholder="تاریخ تولد"
       ></DatePicker>
 
-      <button class="submit-btn" type="submit">Submit</button>
+      <button class="submit-btn" type="submit">تایید</button>
     </Form>
   </div>
 </template>
@@ -68,27 +69,27 @@ function onInvalidSubmit() {}
 const listRegions = [
   {
     id: 1,
-    title: "italy",
+    title: "یزد",
   },
   {
     id: 2,
-    title: "Ecuador",
+    title: "شیراز",
   },
   {
     id: 3,
-    title: "brazil",
+    title: "مشهد",
   },
   {
     id: 4,
-    title: "iran",
+    title: "تهران",
   },
   {
     id: 5,
-    title: "USA",
+    title: "بندرعباس",
   },
   {
     id: 6,
-    title: "canada",
+    title: "کرمان",
   },
 ];
 
@@ -98,8 +99,8 @@ type Form = {
   region: string;
   password: string;
   birthDate: string;
-  confirm_password: string;
 };
+
 const state = reactive<{
   form: Form;
 }>({
@@ -108,13 +109,15 @@ const state = reactive<{
 // Using yup to generate a validation schema
 // https://vee-validate.logaretm.com/v4/guide/validation#validation-schemas-with-yup
 const schema = Yup.object().shape({
-  name: Yup.string().required(),
-  email: Yup.string().email().required(),
-  region: Yup.string().required(),
-  birthDate: Yup.string().required(),
-  password: Yup.string().min(6).required(),
+  name: Yup.string().required("نام را وارد کنید"),
+  email: Yup.string().email("ایمیل صحیح نیست").required("ایمیل را وارد کنید"),
+  region: Yup.string().required("شهر را انتخاب کنید"),
+  birthDate: Yup.string().required("تاریخ تولد را وارد کنید"),
+  password: Yup.string()
+    .min(6, "گذرواژه حداقل باید ۶ کاراکتر باشد")
+    .required("گذرواژه را وارد کنید"),
   confirm_password: Yup.string()
-    .required()
-    .oneOf([Yup.ref("password")], "Passwords do not match"),
+    .required("تکرار گذرواژه را وارد کنید")
+    .oneOf([Yup.ref("password")], "تکرار گذرواژه یکسان نیست"),
 });
 </script>

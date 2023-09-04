@@ -5,17 +5,17 @@
     :error-message="errorMessage || ''"
     :meta="meta"
   >
-  <div class="textInputContainer">
-    <input  
-      class="input"
-      :value="inputValue"
-      :name="name"
-      :id="name"
-      :type="type"
-      :placeholder="placeholder"
-      @input="onInputChange($event)"
-    />
-  </div>
+    <div class="textInputContainer">
+      <input
+        class="input"
+        :value="inputValue"
+        :name="name"
+        :id="name"
+        :type="type"
+        :placeholder="placeholder"
+        @input="onInputChange($event)"
+      />
+    </div>
   </FormItem>
 </template>
 

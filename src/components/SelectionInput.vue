@@ -7,16 +7,27 @@
   >
     <div class="select">
       <v-select
-        v-model="inputValue"
+        :model-value="inputValue"
         class="v-select"
         :class="{ 'v-select-focus': open }"
         :options="items"
         :label="props.selectionLabel"
         :reduce="(val : Record<string, any>) => val[props.selectionValue]"
-        @update:model-value="onChange"
+        @update:modelValue="
+          (event : string) => {
+            inputValue = event;
+            emit('update:modelValue', event);
+          }
+        "
         @open="open = true"
         @close="open = false"
-      ></v-select>
+      >
+        <template #no-options="{}">
+          <div>
+            {{ noOptions }}
+          </div>
+        </template></v-select
+      >
     </div>
   </FormItem>
 </template>
@@ -36,6 +47,7 @@ const props = withDefaults(
     items: Array<Record<string, any>>;
     selectionLabel?: string;
     selectionValue?: string;
+    noOptions?: string;
   }>(),
   {
     type: "text",
@@ -43,6 +55,7 @@ const props = withDefaults(
     placeholder: "",
     selectionLabel: "title",
     selectionValue: "id",
+    noOptions: "موردی برای نمایش وجود ندارد",
   }
 );
 
@@ -62,12 +75,6 @@ const {
     (item) => item[props.selectionValue] == props.modelValue
   )?.[props.selectionLabel],
 });
-
-const onChange = (value: string) => {
-  // const value = (event.target as HTMLSelectElement).value;
-  //   handleChange(value);
-  emit("update:modelValue", value);
-};
 
 const emit = defineEmits<{
   (e: "update:modelValue", event: string): void;

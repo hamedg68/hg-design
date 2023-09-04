@@ -87,6 +87,12 @@ form {
 .v-select .vs__selected-options {
   padding: 0 !important;
 }
+.v-select .vs__clear {
+  margin: 0 0 0 4px;
+}
+.v-select .vs__open-indicator {
+  margin: 0 0 0 2px;
+}
 .v-select .vs__dropdown-toggle {
   outline: none;
   padding: 0;
@@ -105,6 +111,8 @@ form {
 
 .v-select .vs__dropdown-menu {
   border: none !important;
+  text-align: right;
+  color: black;
 }
 
 .input:focus,
