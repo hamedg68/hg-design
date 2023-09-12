@@ -33,22 +33,30 @@
         label="تکرار گذرواژه"
         placeholder="تکرار گذرواژه"
       />
-
       <SelectionInput
-        v-model="state.form.region"
-        name="region"
+        v-model="state.form.province"
+        name="province"
+        label="استان"
+        :options="provinces"
+        placeholder="استان"
+      />
+      <SelectionInput
+        v-model="state.form.city"
+        name="city"
         label="شهر"
-        :items="listRegions"
+        :options="
+          provinces.find((item) => item.id === state.form.province)?.cities ||
+          []
+        "
         placeholder="شهر"
       />
-
       <DatePicker
         v-model="state.form.birthDate"
         name="birthDate"
         label="تاریخ تولد"
         placeholder="تاریخ تولد"
         disable-incoming-days
-      ></DatePicker>
+      />
 
       <button class="submit-btn" type="submit">تایید</button>
     </Form>
@@ -62,42 +70,18 @@ import * as Yup from "yup";
 import TextInput from "./components/TextInput.vue";
 import SelectionInput from "./components/SelectionInput.vue";
 import DatePicker from "./components/DatePicker.vue";
+import { provinces } from "./data";
 
 function onSubmit(values: any) {
   alert(JSON.stringify(values, null, 2));
 }
 function onInvalidSubmit() {}
-const listRegions = [
-  {
-    id: 1,
-    title: "یزد",
-  },
-  {
-    id: 2,
-    title: "شیراز",
-  },
-  {
-    id: 3,
-    title: "مشهد",
-  },
-  {
-    id: 4,
-    title: "تهران",
-  },
-  {
-    id: 5,
-    title: "بندرعباس",
-  },
-  {
-    id: 6,
-    title: "کرمان",
-  },
-];
 
 type Form = {
   name: string;
   email: string;
-  region: string;
+  province: string;
+  city: string;
   password: string;
   birthDate: string;
 };
@@ -112,7 +96,8 @@ const state = reactive<{
 const schema = Yup.object().shape({
   name: Yup.string().required("نام را وارد کنید"),
   email: Yup.string().email("ایمیل صحیح نیست").required("ایمیل را وارد کنید"),
-  region: Yup.string().required("شهر را انتخاب کنید"),
+  province: Yup.string().required("استان را انتخاب کنید"),
+  city: Yup.string().required("شهر را انتخاب کنید"),
   birthDate: Yup.string().required("تاریخ تولد را وارد کنید"),
   password: Yup.string()
     .min(6, "گذرواژه حداقل باید ۶ کاراکتر باشد")

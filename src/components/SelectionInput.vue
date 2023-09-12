@@ -7,18 +7,12 @@
   >
     <div class="select">
       <v-select
-        :model-value="inputValue"
+        v-model="inputValue"
         class="v-select"
         :class="{ 'v-select-focus': open }"
-        :options="items"
+        :options="options"
         :label="props.selectionLabel"
         :reduce="(val : Record<string, any>) => val[props.selectionValue]"
-        @update:modelValue="
-          (event : string) => {
-            inputValue = event;
-            emit('update:modelValue', event);
-          }
-        "
         @open="open = true"
         @close="open = false"
       >
@@ -33,9 +27,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, toRef } from "vue";
-import { useField } from "vee-validate";
+import { ref, toRef, watch } from "vue";
 import FormItem from "./FormItem.vue";
+import { useField } from "vee-validate";
 import "vue-select/dist/vue-select.css";
 const props = withDefaults(
   defineProps<{
@@ -44,7 +38,7 @@ const props = withDefaults(
     type?: string;
     modelValue?: string;
     placeholder?: string;
-    items: Array<Record<string, any>>;
+    options: Array<Record<string, any>>;
     selectionLabel?: string;
     selectionValue?: string;
     noOptions?: string;
@@ -60,7 +54,7 @@ const props = withDefaults(
 );
 
 // use `toRef` to create reactive references to `name` prop which is passed to `useField`
-// this is important because vee-validte needs to know if the field name changes
+// this is important because vee-validate needs to know if the field name changes
 // https://vee-validate.logaretm.com/v4/guide/composition-api/caveats
 const name = toRef(props, "name");
 const open = ref(false);
@@ -71,7 +65,7 @@ const {
   errorMessage,
   meta,
 } = useField(name, undefined, {
-  initialValue: props.items.find(
+  initialValue: props.options.find(
     (item) => item[props.selectionValue] == props.modelValue
   )?.[props.selectionLabel],
 });
@@ -79,4 +73,24 @@ const {
 const emit = defineEmits<{
   (e: "update:modelValue", event: string): void;
 }>();
+
+watch(
+  () => inputValue.value,
+  (value) => {
+    emit("update:modelValue", value);
+  }
+);
+
+watch(
+  () => props.options,
+  (nVal, oVal) => {
+    if (JSON.stringify(nVal) !== JSON.stringify(oVal)) {
+      const i = props.options.find(
+        (item) => item[props.selectionValue] == inputValue.value
+      );
+      !i && (inputValue.value = undefined);
+    }
+  },
+  { deep: true }
+);
 </script>
