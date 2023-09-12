@@ -28,6 +28,6 @@ defineProps<{
   name: string;
   label?: string;
   errorMessage: string;
-  meta: FieldMeta<string>;
+  meta: FieldMeta<string | boolean | null>;
 }>();
 </script>

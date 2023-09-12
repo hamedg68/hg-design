@@ -1,12 +1,12 @@
 <template>
   <div>
     <p>{{ state.form }}</p>
+
     <Form
       @submit="onSubmit"
       :validation-schema="schema"
       @invalid-submit="onInvalidSubmit"
     >
-
       <TextInput
         v-model="state.form.name"
         name="name"
@@ -51,6 +51,21 @@
         placeholder="تاریخ تولد"
         disable-incoming-days
       />
+
+      <CheckInput name="confirmRegulations">
+        <template #label>
+          <div>
+            لطفا
+            <a
+              href="http://www.google.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              >قوانین</a
+            >
+            را تایید کنید
+          </div>
+        </template>
+      </CheckInput>
       <button class="submit-btn" type="submit">تایید</button>
     </Form>
   </div>
@@ -63,6 +78,7 @@ import * as Yup from "yup";
 import TextInput from "./components/TextInput.vue";
 import SelectionInput from "./components/SelectionInput.vue";
 import DatePicker from "./components/DatePicker.vue";
+import CheckInput from "./components/CheckInput.vue";
 import { provinces } from "./data";
 
 function onSubmit(values: any) {
@@ -84,6 +100,7 @@ const state = reactive<{
 }>({
   form: {} as Form,
 });
+
 // Using yup to generate a validation schema
 // https://vee-validate.logaretm.com/v4/guide/validation#validation-schemas-with-yup
 const schema = Yup.object().shape({
@@ -98,5 +115,8 @@ const schema = Yup.object().shape({
   confirm_password: Yup.string()
     .required("تکرار گذرواژه را وارد کنید")
     .oneOf([Yup.ref("password")], "تکرار گذرواژه یکسان نیست"),
+  confirmRegulations: Yup.boolean()
+    .required("قوانین را تایید کنید")
+    .oneOf([true], "قوانین را تایید کنید"),
 });
 </script>
