@@ -33,7 +33,7 @@ import { useField } from "vee-validate";
 import "vue-select/dist/vue-select.css";
 const props = withDefaults(
   defineProps<{
-    label: string;
+    label?: string;
     name: string;
     type?: string;
     modelValue?: string;

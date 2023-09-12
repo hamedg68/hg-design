@@ -44,7 +44,7 @@ import { useField } from "vee-validate";
 import FormItem from "./FormItem.vue";
 const props = withDefaults(
   defineProps<{
-    label: string;
+    label?: string;
     name: string;
     modelValue?: string;
     placeholder?: string;

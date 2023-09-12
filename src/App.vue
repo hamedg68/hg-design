@@ -6,44 +6,39 @@
       :validation-schema="schema"
       @invalid-submit="onInvalidSubmit"
     >
+
       <TextInput
         v-model="state.form.name"
         name="name"
         type="text"
-        label="نام"
         placeholder="نام شما..."
       />
       <TextInput
         v-model="state.form.email"
         name="email"
         type="email"
-        label="ایمیل"
         placeholder="ایمیل..."
       />
       <TextInput
         v-model="state.form.password"
         name="password"
         type="password"
-        label="گذرواژه"
         placeholder="گذرواژه"
       />
       <TextInput
         name="confirm_password"
         type="password"
-        label="تکرار گذرواژه"
         placeholder="تکرار گذرواژه"
       />
       <SelectionInput
         v-model="state.form.province"
         name="province"
-        label="استان"
         :options="provinces"
         placeholder="استان"
       />
       <SelectionInput
         v-model="state.form.city"
         name="city"
-        label="شهر"
         :options="
           provinces.find((item) => item.id === state.form.province)?.cities ||
           []
@@ -53,11 +48,9 @@
       <DatePicker
         v-model="state.form.birthDate"
         name="birthDate"
-        label="تاریخ تولد"
         placeholder="تاریخ تولد"
         disable-incoming-days
       />
-
       <button class="submit-btn" type="submit">تایید</button>
     </Form>
   </div>

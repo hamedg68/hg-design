@@ -26,7 +26,7 @@ import { FieldMeta } from "vee-validate";
 
 defineProps<{
   name: string;
-  label: string;
+  label?: string;
   errorMessage: string;
   meta: FieldMeta<string>;
 }>();
