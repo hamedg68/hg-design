@@ -13,6 +13,7 @@
         :options="options"
         :label="props.selectionLabel"
         :reduce="(val : Record<string, any>) => val[props.selectionValue]"
+        :placeholder="placeholder"
         @open="open = true"
         @close="open = false"
       >
