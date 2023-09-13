@@ -21,8 +21,8 @@
           <div>
             {{ noOptions }}
           </div>
-        </template></v-select
-      >
+        </template>
+      </v-select>
     </div>
   </FormItem>
 </template>
