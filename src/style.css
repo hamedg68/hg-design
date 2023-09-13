@@ -56,7 +56,9 @@ form {
 .textInputContainer {
   height: var(--large-height);
 }
-
+.input {
+  width: 100%;
+}
 .input,
 .v-select .vs__search {
   border-radius: 5px;
@@ -65,7 +67,6 @@ form {
   padding: 0 10px;
   height: 100%;
   outline: none;
-  width: 100%;
   transition: border-color 0.3s ease-in-out, color 0.3s ease-in-out,
     background-color 0.3s ease-in-out;
 }
@@ -87,10 +88,11 @@ form {
 }
 .v-select .vs__selected {
   margin-top: 0 !important;
+  overflow: hidden !important;
 }
 .v-select .vs__selected-options {
   padding: 0 !important;
-}
+  }
 .v-select .vs__clear {
   margin: 0 0 0 4px;
 }
