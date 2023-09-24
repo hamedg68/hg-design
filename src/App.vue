@@ -6,6 +6,8 @@
     >
       {{ state.status }}
     </button>
+
+    <iinput></iinput>
     <Form
       @submit="onSubmit"
       :validation-schema="schema"
@@ -108,6 +110,7 @@
 import { reactive } from "vue";
 import { Form } from "vee-validate";
 import * as Yup from "yup";
+import iinput from "./components/iinput.vue";
 import TextInput from "./components/TextInput.vue";
 import SelectionInput from "./components/SelectionInput.vue";
 import DatePicker from "./components/DatePicker.vue";
