@@ -1,1 +1,1 @@
-# Vue 3 + TypeScript + Vite + VeeValidate
+# Component library for vue3
