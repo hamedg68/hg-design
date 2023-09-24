@@ -7,7 +7,6 @@
       {{ state.status }}
     </button>
 
-    <iinput></iinput>
     <Form
       @submit="onSubmit"
       :validation-schema="schema"
@@ -103,6 +102,8 @@
       </CheckInput>
       <button class="submit-btn" type="submit">تایید</button>
     </Form>
+
+    <Marquee><div>asdasdasdsa</div></Marquee>
   </div>
 </template>
 
@@ -110,11 +111,11 @@
 import { reactive } from "vue";
 import { Form } from "vee-validate";
 import * as Yup from "yup";
-import iinput from "./components/iinput.vue";
 import TextInput from "./components/TextInput.vue";
 import SelectionInput from "./components/SelectionInput.vue";
 import DatePicker from "./components/DatePicker.vue";
 import CheckInput from "./components/CheckInput.vue";
+import Marquee from "./components/Marquee.vue";
 import { provinces } from "./data";
 
 function onSubmit(values: any) {
