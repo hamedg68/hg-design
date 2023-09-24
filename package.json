@@ -1,24 +1,53 @@
 {
-  "name": "vee-validate",
-  "private": true,
-  "version": "0.0.0",
+  "name": "hg-design",
+  "private": false,
+  "version": "0.0.3",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build",
+    "build": "vue-tsc --emitDeclarationOnly && vite build",
     "preview": "vite preview"
   },
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/hg-design.umd.js",
+  "module": "./dist/hg-design.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/hg-design.es.js",
+      "require": "./dist/hg-design.umd.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./dist/hg-design.css": {
+      "import": "./dist/hg-design.css",
+      "require": "./dist/hg-design.css"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hamedg68/hg-design.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hamedg68/hg-design/issues"
+  },
+  "homepage": "https://github.com/hamedg68/hg-design#readme",
   "dependencies": {
-    "vue": "^3.3.4",
     "@types/vue-select": "^3.16.2",
     "@vee-validate/yup": "^4.11.3",
     "vee-validate": "^4.11.3",
+    "vue": "^3.3.4",
     "vue-select": "^4.0.0-beta.6",
     "vue3-persian-datetime-picker": "^1.2.2",
     "yup": "^1.2.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",
+    "path": "^0.12.7",
+    "rollup-plugin-typescript2": "^0.35.0",
+    "vite-plugin-dts": "^3.5.4",
     "typescript": "^5.0.2",
     "vite": "^4.4.5",
     "vue-tsc": "^1.8.5"
