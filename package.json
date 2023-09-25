@@ -36,7 +36,7 @@
   },
   "homepage": "https://github.com/hamedg68/hg-design#readme",
   "dependencies": {
-  
+    "vue3-persian-datetime-picker": "^1.2.2"
   },
   "devDependencies": {
     "@types/vue-select": "^3.16.2",
@@ -44,7 +44,6 @@
     "vee-validate": "^4.11.3",
     "vue": "^3.3.4",
     "vue-select": "^4.0.0-beta.6",
-    "vue3-persian-datetime-picker": "^1.2.2",
     "yup": "^1.2.0",
     "@vitejs/plugin-vue": "^4.2.3",
     "path": "^0.12.7",
