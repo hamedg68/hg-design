@@ -1,12 +1,13 @@
 {
   "name": "hg-design",
   "private": false,
-  "version": "0.0.21",
+  "version": "0.0.22",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --emitDeclarationOnly && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepare": "yarn add vue3-persian-datetime-picker"
   },
   "license": "MIT",
   "files": [
