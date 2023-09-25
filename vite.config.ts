@@ -42,7 +42,7 @@ export default defineConfig({
       input: {
         main: path.resolve("src/components/main.ts"),
       },
-      external: ["vue"],
+      external: ["vue" , "vue3-persian-datetime-picker"],
       output: {
         assetFileNames: (assetInfo) => {
           if (assetInfo.name === "main.css") return "hg-design.css";
