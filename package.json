@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --emitDeclarationOnly && vite build",
-    "preview": "vite preview",
-    "prepare": "yarn add vue3-persian-datetime-picker"
+    "preview": "vite preview"
   },
   "license": "MIT",
   "files": [
