@@ -6,6 +6,9 @@ import typescript2 from "rollup-plugin-typescript2";
 import dts from "vite-plugin-dts";
 
 export default defineConfig({
+  optimizeDeps: {
+    exclude: ['vue3-persian-datetime-picker'],
+  },
   plugins: [
     vue(),
     dts({
