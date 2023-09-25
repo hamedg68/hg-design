@@ -6,6 +6,7 @@
     >
       {{ state.status }}
     </button>
+
     <Form
       @submit="onSubmit"
       :validation-schema="schema"
@@ -101,6 +102,8 @@
       </CheckInput>
       <button class="submit-btn" type="submit">تایید</button>
     </Form>
+
+    <Marquee><div>asdasdasdsa</div></Marquee>
   </div>
 </template>
 
@@ -112,6 +115,7 @@ import TextInput from "./components/TextInput.vue";
 import SelectionInput from "./components/SelectionInput.vue";
 import DatePicker from "./components/DatePicker.vue";
 import CheckInput from "./components/CheckInput.vue";
+import Marquee from "./components/Marquee.vue";
 import { provinces } from "./data";
 
 function onSubmit(values: any) {

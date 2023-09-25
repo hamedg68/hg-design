@@ -1082,6 +1082,11 @@ vue-tsc@^1.8.8:
     "@vue/typescript" "1.8.13"
     semver "^7.3.8"
 
+vue3-marquee@3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/vue3-marquee/-/vue3-marquee-3.2.1.tgz#591cc35b3e953608c69e6d2a69804a8d26f907d0"
+  integrity sha512-pNvmdtF06cm6AD0fKiPCuH6W80z+WB4Lpfx5Zd+jHrZovyFRRJOgXBNqXQtiBA1jQWcsHR2QQ/8Eu4OFLFgX2Q==
+
 vue3-persian-datetime-picker@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/vue3-persian-datetime-picker/-/vue3-persian-datetime-picker-1.2.2.tgz#a54d3363024005a8ee8087e66bb242f39a5a4de0"

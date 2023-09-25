@@ -34,7 +34,6 @@ export default defineConfig({
       formats: ["es", "cjs", "umd"],
       fileName: (format) => `hg-design.${format}.js`,
       // fileName: (format) => (format === "es" ? "index.js" : "index.cjs"),
-
     },
     rollupOptions: {
       // make sure to externalize deps that should not be bundled
@@ -42,7 +41,7 @@ export default defineConfig({
       input: {
         main: path.resolve("src/components/main.ts"),
       },
-      external: ["vue"],
+      external: ["vue", "vue3-persian-datetime-picker"],
       output: {
         assetFileNames: (assetInfo) => {
           if (assetInfo.name === "main.css") return "hg-design.css";
@@ -51,6 +50,7 @@ export default defineConfig({
         exports: "named",
         globals: {
           vue: "Vue",
+          'vue3-persian-datetime-picker' : "Vue3PersianDatetimePicker"
         },
       },
     },
@@ -59,8 +59,14 @@ export default defineConfig({
     alias: {
       "@": path.resolve("src"),
       // "@": fileURLToPath(new URL("./src", import.meta.url)),
-
     },
+    //for vue3-persian-datetime-picker
+    // mainFields: [
+    //   'browser',
+    //   'module',
+    //   'main',
+    //   'jsnext:main',
+    //   'jsnext'
+    // ]
   },
- 
 });

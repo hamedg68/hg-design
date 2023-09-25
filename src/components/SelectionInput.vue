@@ -6,7 +6,7 @@
     :meta="meta"
   >
     <div class="select">
-      <v-select
+      <vSelect
         v-model="inputValue"
         class="v-select"
         :class="{ 'v-select-focus': open }"
@@ -22,7 +22,7 @@
             {{ noOptions }}
           </div>
         </template>
-      </v-select>
+      </vSelect>
     </div>
   </FormItem>
 </template>
@@ -31,6 +31,7 @@
 import { ref, toRef, watch } from "vue";
 import FormItem from "./FormItem.vue";
 import { useField } from "vee-validate";
+import vSelect from "vue-select";
 import "vue-select/dist/vue-select.css";
 const props = withDefaults(
   defineProps<{

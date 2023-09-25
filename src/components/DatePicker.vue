@@ -26,7 +26,7 @@
       />
     </div>
 
-    <persian-date-picker
+    <Vue3PersianDatetimePicker
       :model-value="inputValue"
       format="YYYY-MM-DD"
       display-format="jYYYY-jMM-jDD"
@@ -42,6 +42,8 @@
 import { toRef } from "vue";
 import { useField } from "vee-validate";
 import FormItem from "./FormItem.vue";
+import Vue3PersianDatetimePicker from "vue3-persian-datetime-picker";
+
 const props = withDefaults(
   defineProps<{
     label?: string;
