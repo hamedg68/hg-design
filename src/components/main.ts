@@ -1,16 +1,16 @@
 import type { App } from "vue";
 import {
-  DatePicker,
   TextInput,
   SelectionInput,
   CheckInput,
   FormItem,
   Marquee,
+  DatePickerr,
 } from "@/components";
 import "../style.css";
 export default {
   install: (app: App) => {
-    app.component("DatePicker", DatePicker);
+    app.component("DatePickerr", DatePickerr);
     app.component("TextInput", TextInput);
     app.component("SelectionInput", SelectionInput);
     app.component("CheckInput", CheckInput);
@@ -19,4 +19,11 @@ export default {
   },
 };
 
-export { DatePicker, TextInput, Marquee, SelectionInput, FormItem, CheckInput };
+export {
+  DatePickerr,
+  TextInput,
+  Marquee,
+  SelectionInput,
+  FormItem,
+  CheckInput,
+};
