@@ -5,12 +5,12 @@ import {
   CheckInput,
   FormItem,
   Marquee,
-  DatePickerr,
+  DatePicker,
 } from "@/components";
 import "../style.css";
 export default {
   install: (app: App) => {
-    app.component("DatePickerr", DatePickerr);
+    app.component("DatePicker", DatePicker);
     app.component("TextInput", TextInput);
     app.component("SelectionInput", SelectionInput);
     app.component("CheckInput", CheckInput);
@@ -20,7 +20,7 @@ export default {
 };
 
 export {
-  DatePickerr,
+  DatePicker,
   TextInput,
   Marquee,
   SelectionInput,
